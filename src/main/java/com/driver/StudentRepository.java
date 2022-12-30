@@ -1,10 +1,7 @@
 package com.driver;
 
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,9 +24,6 @@ public class StudentRepository {
     public String addTeacher(Teacher teacher){
         String name = teacher.getName();
         teacherDB.put(name, teacher);
-//        if(teacher_students.get(name) == null){
-//            teacher_students.put(name, null);
-//        }
         return "New teacher added successfully";
     }
 
@@ -44,7 +38,7 @@ public class StudentRepository {
 
 
     public Student getStudentByName(String name){
-        if(!studentDB.containsKey(name)) return null;
+        //if(!studentDB.containsKey(name)) return null;
         Student student = studentDB.get(name);
         return student;
     }
@@ -59,14 +53,14 @@ public class StudentRepository {
 
     public List<String> getStudentsByTeacherName(String teacher){
         List<String> students = teacher_students.get(teacher);
-        if(students == null) return null;
+        //if(students == null) return null;
         return students;
     }
 
 
     public List<String> getAllStudents(){
         List<String> students = new ArrayList<>(studentDB.keySet());
-        if(students == null) return null;
+        //if(students == null) return null;
         return students;
     }
 
