@@ -27,15 +27,15 @@ public class StudentRepository {
     public String addTeacher(Teacher teacher){
         String name = teacher.getName();
         teacherDB.put(name, teacher);
-        if(teacher_students.get(name) == null){
-            teacher_students.put(name, null);
-        }
+//        if(teacher_students.get(name) == null){
+//            teacher_students.put(name, null);
+//        }
         return "New teacher added successfully";
     }
 
 
     public String addStudentTeacherPair(String student,String teacher){
-        if(teacher_students.get(teacher) == null){
+        if(!teacher_students.containsKey(teacher)){
             teacher_students.put(teacher, new ArrayList<>());
         }
         teacher_students.get(teacher).add(student);
@@ -73,15 +73,13 @@ public class StudentRepository {
 
     public String deleteTeacherByName(String teacher){
         if(teacher_students.containsKey(teacher)){
-            if(teacher_students.get(teacher) != null){
-                for(String name: teacher_students.get(teacher)){
-                    if(studentDB.containsKey(name)){
-                        studentDB.remove(name);
-                    }
+            for(String name: teacher_students.get(teacher)){
+                if(studentDB.containsKey(name)){
+                    studentDB.remove(name);
                 }
-                teacher_students.remove(teacher);
-                teacherDB.remove(teacher);
             }
+            teacher_students.remove(teacher);
+            teacherDB.remove(teacher);
         }
         return teacher + " removed successfully";
     }
