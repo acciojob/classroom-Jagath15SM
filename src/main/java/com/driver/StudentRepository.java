@@ -59,7 +59,10 @@ public class StudentRepository {
 
 
     public List<String> getAllStudents(){
-        List<String> students = new ArrayList<>(studentDB.keySet());
+        List<String> students = new ArrayList<>();
+        for(String name : studentDB.keySet()){
+            students.add(name);
+        }
         //if(students == null) return null;
         return students;
     }
