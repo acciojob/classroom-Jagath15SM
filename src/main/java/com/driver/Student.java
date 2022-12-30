@@ -1,5 +1,8 @@
 package com.driver;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Student {
 
     private String name;
@@ -20,23 +23,12 @@ public class Student {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getAge() {
         return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public double getAverageScore() {
         return averageScore;
     }
 
-    public void setAverageScore(double averageScore) {
-        this.averageScore = averageScore;
-    }
 }

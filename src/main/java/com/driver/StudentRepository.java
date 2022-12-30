@@ -53,17 +53,14 @@ public class StudentRepository {
 
     public List<String> getStudentsByTeacherName(String teacher){
         List<String> students = teacher_students.get(teacher);
-        //if(students == null) return null;
+        if(students == null) return null;
         return students;
     }
 
 
     public List<String> getAllStudents(){
-        List<String> students = new ArrayList<>();
-        for(String name : studentDB.keySet()){
-            students.add(name);
-        }
-        //if(students == null) return null;
+        List<String> students = new ArrayList<>(studentDB.keySet());
+        if(students == null) return null;
         return students;
     }
 
